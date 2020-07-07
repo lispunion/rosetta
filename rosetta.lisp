@@ -78,6 +78,18 @@
 ;; Strings
 
 (procedure
+ (purpose "Translate a Unicode string to uppercase")
+ (in scheme string-upcase)
+ (in common-lisp string-upcase)
+ (in clojure upper-case clojure.string))
+
+(procedure
+ (purpose "Translate a Unicode string to lowercase")
+ (in scheme string-downcase)
+ (in common-lisp string-downcase)
+ (in clojure lower-case clojure.string))
+
+(procedure
  (purpose "Concatenate many strings into one")
  (in scheme string-append)
  (in common-lisp "concatenate #'string")
