@@ -44,7 +44,9 @@
    (in common-lisp "(make-list N :initial-element x)")
    (in emacs-lisp make-list)
    (in scheme make-list)
-   (in clojure "(into () (repeat N x))"))
+   (in clojure "(into () (repeat N x))")
+   (in fsharp "List.replicate")
+   (in elm "List.repeat"))
 
   (procedure
    (purpose "Make a list of the given elements")
@@ -162,7 +164,7 @@
    (in scheme append-reverse! (srfi 1))
    (in racket append-reverse! srfi/1)))
 
-(group "List traversal"
+(group "List mapping"
 
   (procedure
    (purpose "Apply function to each element, collect results into list")
@@ -196,9 +198,42 @@
    (in clojure run!)
    (in standard-ml "List.app")
    (in ocaml "List.iter")
-   (in fsharp "List.iter")))
+   (in fsharp "List.iter"))
 
-(group "List iteration"
+  (procedure
+   (purpose "Apply function to each element, collect true results into list")
+   (in scheme filter-map (srfi 1))
+   (in racket filter-map)
+   (in standard-ml "List.mapPartial")
+   (in ocaml "List.filter_map")
+   (in elm "List.filterMap")))
+
+(group "List filtering"
+
+  (procedure
+   (purpose "Collect list items for which predicate returns true")
+   (in common-lisp remove-if-not)
+   (in emacs-lisp cl-remove-if-not)
+   (in scheme filter (srfi 1))
+   (in racket filter)
+   (in clojure filter)
+   (in standard-ml "List.filter")
+   (in ocaml "List.filter")
+   (in fsharp "List.filter")
+   (in elm "List.filter"))
+
+  (procedure
+   (purpose "Collect list items for which predicate returns false")
+   (in common-lisp remove-if)
+   (in emacs-lisp cl-remove-if)
+   (in scheme remove (srfi 1))
+   (in clojure remove)))
+
+(group "List folding"
+
+       )
+
+(group "List length"
 
   (procedure
    (purpose "Get the number of elements in a proper list")
