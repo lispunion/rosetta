@@ -3,24 +3,28 @@
   (procedure
    (purpose "Make a pair of two objects")
    (in common-lisp cons)
+   (in emacs-lisp cons)
    (in scheme cons)
    (in clojure cons))
 
   (procedure
    (purpose "Make a list of an element repeated N times")
    (in common-lisp "(make-list N :initial-element x)")
+   (in emacs-lisp make-list)
    (in scheme make-list)
    (in clojure "(into () (repeat N x))"))
 
   (procedure
    (purpose "Make a list of the given elements")
    (in common-lisp list)
+   (in emacs-lisp list)
    (in scheme list)
    (in clojure list))
 
   (procedure
    (purpose "Make a list of the given elements and a tail")
    (in common-lisp list*)
+   (in emacs-lisp list*)
    (in scheme cons* (srfi 1))
    (in clojure list*)))
 
@@ -29,12 +33,14 @@
   (procedure
    (purpose "Make a vector of an element repeated N times")
    (in common-lisp "(make-array N :initial-element x)")
+   (in emacs-lisp make-vector)
    (in scheme make-vector)
    (in clojure "(into [] (repeat N x))"))
 
   (procedure
    (purpose "Make a vector of the given elements")
    (in common-lisp vector)
+   (in emacs-lisp vector)
    (in scheme vector)
    (in clojure vector)))
 
