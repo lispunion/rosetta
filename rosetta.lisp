@@ -5,7 +5,11 @@
    (in common-lisp cons)
    (in emacs-lisp cons)
    (in scheme cons)
-   (in clojure cons))
+   (in clojure cons)
+   (in standard-ml "::")
+   (in ocaml "::")
+   (in fsharp "::")
+   (in elm "::"))
 
   (procedure
    (purpose "Make a list of an element repeated N times")
