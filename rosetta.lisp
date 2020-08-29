@@ -1,4 +1,32 @@
-(group "List"
+(group "List predicates"
+
+  (procedure
+   (purpose "Test whether something is a pair or null")
+   (in common-lisp listp)
+   (in emacs-lisp listp)
+   (in scheme "(or (null? x) (pair? x))")
+   (in racket "(or (null? x) (pair? x))"))
+
+  (procedure
+   (purpose "Test whether something is a proper list")
+   (in common-lisp "proper-list-p" alexandria)
+   (in emacs-lisp "proper-list-p")
+   (in scheme "proper-list?")  ; Or is RnRS `list?` enough?
+   (in racket "list?")
+   (in clojure "list?"))  ; Clojure does not have improper lists.
+
+  (procedure
+   (purpose "Test whether a list is empty")
+   (in common-lisp null)
+   (in emacs-lisp null)
+   (in scheme null?)
+   (in clojure empty?)
+   (in standard-ml "List.null")
+   (in ocaml "")
+   (in fsharp ".IsEmpty")
+   (in elm "List.isEmpty")))
+
+(group "List constructors"
 
   (procedure
    (purpose "Make a pair of two objects")
@@ -31,6 +59,158 @@
    (in emacs-lisp list*)
    (in scheme cons* (srfi 1))
    (in clojure list*)))
+
+(group "List destructuring"
+
+  (procedure
+   (purpose "Get the first element of a list")
+   (in common-lisp car)
+   (in emacs-lisp car)
+   (in scheme car)
+   (in racket car)
+   (in clojure first)
+   (in standard-ml "List.hd")
+   (in ocaml "List.hd")
+   (in fsharp "List.head")
+   (in elm "List.head"))
+
+  (procedure
+   (purpose "Get all but the first element of a list")
+   (in common-lisp cdr)
+   (in emacs-lisp cdr)
+   (in scheme cdr)
+   (in racket cdr)
+   (in clojure rest)
+   (in standard-ml "List.tl")
+   (in ocaml "List.tl")
+   (in fsharp "List.tail")
+   (in elm "List.tail"))
+
+  (procedure
+   (purpose "Get the n'th element of a list")
+   (in common-lisp nth)
+   (in emacs-lisp nth)
+   (in scheme list-ref)
+   (in racket list-ref)
+   (in clojure nth)
+   (in standard-ml "List.nth")
+   (in ocaml "List.nth")
+   (in fsharp "List.item")))
+
+(group "List making (non-destructive)"
+
+  (procedure
+   (purpose "Concatenate lists given as arguments (copy all but the last)")
+   (in common-lisp append)
+   (in emacs-lisp append)
+   (in scheme append)
+   (in racket append)
+   (in clojure concat)
+   (in standard-ml "List.@")
+   (in ocaml "List.append")
+   (in fsharp "List.append")
+   (in elm "List.append"))
+
+  (procedure
+   (purpose "Concatenate lists given in a list (copy all)")
+   (in scheme concatenate (srfi 1))
+   (in racket concatenate srfi/1)
+   (in standard-ml "List.concat")
+   (in ocaml "List.concat")
+   (in fsharp "List.concat")
+   (in elm "List.concat"))
+
+  (procedure
+   (purpose "Reverse a list (copy)")
+   (in common-lisp reverse)
+   (in emacs-lisp reverse)
+   (in scheme reverse)
+   (in racket reverse)
+   (in clojure reverse)
+   (in standard-ml "List.rev")
+   (in ocaml "List.rev")
+   (in fsharp "List.rev")
+   (in elm "List.reverse"))
+
+  (procedure
+   (purpose "Reverse a list (copy) then append to that (not copy)")
+   (in common-lisp revappend)
+   (in emacs-lisp cl-revappend)
+   (in scheme append-reverse (srfi 1))
+   (in racket append-reverse srfi/1)
+   (in standard-ml List.revAppend)
+   (in ocaml "List.rev_append")))
+
+(group "List making (destructive)"
+
+  (procedure
+   (purpose "Reverse a list")
+   (in common-lisp nreverse)
+   (in emacs-lisp reverse)
+   (in scheme reverse)
+   (in racket reverse)
+   (in clojure reverse)
+   (in standard-ml "List.rev")
+   (in ocaml "List.rev")
+   (in fsharp "List.rev")
+   (in elm "List.reverse"))
+
+  (procedure
+   (purpose "Reverse a list (in place) then append to that (not copy)")
+   (in common-lisp nreconc)
+   (in emacs-lisp cl-nreconc)
+   (in scheme append-reverse! (srfi 1))
+   (in racket append-reverse! srfi/1)))
+
+(group "List traversal"
+
+  (procedure
+   (purpose "Apply function to each element, collect results into list")
+   (in common-lisp mapcar)
+   (in emacs-lisp mapcar)
+   (in scheme map)
+   (in racket map)
+   (in clojure map)
+   (in standard-ml "List.map")
+   (in ocaml "List.map")
+   (in fsharp "List.map")
+   (in elm "List.map"))
+
+  (procedure
+   (purpose "Apply function to each element, concatenate resulting lists")
+   (in common-lisp mapcan)
+   (in emacs-lisp mapcan)
+   (in scheme append-map (srfi 1))
+   (in racket append-map)
+   (in standard-ml "List.map")
+   (in ocaml "List.concat_map")
+   (in fsharp "List.collect")
+   (in elm "List.concatMap"))
+
+  (procedure
+   (purpose "Apply function to each element, ignore results")
+   (in common-lisp mapc)
+   (in emacs-lisp mapc)
+   (in scheme for-each)
+   (in racket for-each)
+   (in clojure run!)
+   (in standard-ml "List.app")
+   (in ocaml "List.")
+   (in fsharp ".length")))
+
+(group "List iteration"
+
+  (procedure
+   (purpose "Get the number of elements in a proper list")
+   (in common-lisp length)
+   (in emacs-lisp length)
+   (in scheme length)
+   (in racket length)
+   (in clojure count)
+   (in standard-ml "List.length")
+   (in ocaml "List.length")
+   (in fsharp ".length")
+   (in elm "List.length")))
 
 (group "Vector"
 
