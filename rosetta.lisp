@@ -184,7 +184,6 @@
    (in emacs-lisp mapcan)
    (in scheme append-map (srfi 1))
    (in racket append-map)
-   (in standard-ml "List.map")
    (in ocaml "List.concat_map")
    (in fsharp "List.collect")
    (in elm "List.concatMap"))
