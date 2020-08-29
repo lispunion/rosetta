@@ -195,8 +195,8 @@
    (in racket for-each)
    (in clojure run!)
    (in standard-ml "List.app")
-   (in ocaml "List.")
-   (in fsharp ".length")))
+   (in ocaml "List.iter")
+   (in fsharp "List.iter")))
 
 (group "List iteration"
 
@@ -209,7 +209,7 @@
    (in clojure count)
    (in standard-ml "List.length")
    (in ocaml "List.length")
-   (in fsharp ".length")
+   (in fsharp "List.length")
    (in elm "List.length")))
 
 (group "Vector"
