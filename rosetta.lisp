@@ -359,3 +359,41 @@
    (in scheme (regexp-replace old-regexp str new-string) (srfi 115))
    (in racket (regexp-replace* old-regexp str new-string))
    (in clojure (replace str old-regexp new-string) clojure.string)))
+
+(group "Bitwise operations"
+
+  (procedure
+   (purpose "And")
+   (in common-lisp logand)
+   (in emacs-lisp logand)
+   (in scheme bitwise-and (srfi 151))
+   (in racket bitwise-and)
+   (in clojure bit-and)
+   (in standard-ml "Word.andb")
+   (in ocaml "Int.logand")
+   (in fsharp "&&&")
+   (in elm "Bitwise.and"))
+
+  (procedure
+   (purpose "Inclusive or")
+   (in common-lisp logior)
+   (in emacs-lisp logior)
+   (in scheme bitwise-ior (srfi 151))
+   (in racket bitwise-ior)
+   (in clojure bit-or)
+   (in standard-ml "Word.orb")
+   (in ocaml "Int.logor")
+   (in fsharp "|||")
+   (in elm "Bitwise.or"))
+
+  (procedure
+   (purpose "Exclusive or")
+   (in common-lisp logxor)
+   (in emacs-lisp logxor)
+   (in scheme bitwise-xor (srfi 151))
+   (in racket bitwise-xor)
+   (in clojure bit-xor)
+   (in standard-ml "Word.xorb")
+   (in ocaml "Int.logxor")
+   (in fsharp "^^^")
+   (in elm "Bitwise.xor")))
