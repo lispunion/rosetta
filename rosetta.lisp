@@ -44,26 +44,40 @@
    (in scheme vector)
    (in clojure vector)))
 
-(group "Set"
+(group "List as set"
 
   (procedure
    (purpose "Union of two sets")
    (in common-lisp union)
-   (in scheme lset-union (srfi 1))
+   (in emacs-lisp cl-union)
+   (in scheme lset-union (srfi 1)))
+
+  (procedure
+   (purpose "Intersection of two sets")
+   (in common-lisp intersection)
+   (in emacs-lisp cl-intersection)
+   (in scheme lset-intersection (srfi 1)))
+
+  (procedure
+   (purpose "Difference of two sets")
+   (in common-lisp set-difference)
+   (in emacs-lisp cl-set-difference)
+   (in scheme lset-difference (srfi 1))))
+
+(group "Set"
+
+  (procedure
+   (purpose "Union of two sets")
    (in scheme set-union (srfi 113))
    (in clojure union clojure.set))
 
   (procedure
    (purpose "Intersection of two sets")
-   (in common-lisp intersection)
-   (in scheme lset-intersection (srfi 1))
    (in scheme set-intersection (srfi 113))
    (in clojure intersection clojure.set))
 
   (procedure
    (purpose "Difference of two sets")
-   (in common-lisp set-difference)
-   (in scheme lset-difference (srfi 1))
    (in scheme set-difference (srfi 113))
    (in clojure difference clojure.set)))
 
