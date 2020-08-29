@@ -101,10 +101,10 @@
     `(table
       (tr (th (@ (class "hidden")))
           (th (@ (colspan ,(number->string (length dialects-of-lisp)))
-                 (class "green"))
+                 (class "lisp"))
               "Lisp")
           (th (@ (colspan ,(number->string (length dialects-of-ml)))
-                 (class "blue"))
+                 (class "ml"))
               "ML"))
       (tr (th (@ (class "hidden")))
           ,@(map (lambda (language) `(th ,(language-title language)))
@@ -122,7 +122,11 @@
                        ,@(map (lambda (language)
                                 (let ((x (procedure-in (language-id language)
                                                        proc)))
-                                  `(td (code ,(stringify x)))))
+                                  `(td (@ (class ,(if (assoc (language-id language)
+                                                             dialects-of-lisp)
+                                                      "lisp"
+                                                      "ml")))
+                                       (code ,(stringify x)))))
                               languages)))
                 (group-procedures group))))
          groups))))
@@ -145,8 +149,10 @@
           "th.group { background-color: sandybrown; }"
           "th.hidden { border: 0; }"
           ".red { background-color: sandybrown; }"
-          ".green { background-color: lightgreen; }"
-          ".blue { background-color: lightblue; }"))
+          "th.lisp { background-color: lightgreen; }"
+          "td.lisp { background-color: lightgreen; }"
+          "th.ml { background-color: lightblue; }"
+          "td.ml { background-color: lightblue; }"))
        (body
         (h1 ,title)
         ,(big-table))))
