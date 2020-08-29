@@ -94,3 +94,11 @@
  (in scheme string-append)
  (in common-lisp "concatenate #'string")
  (in clojure str))
+
+;; Regular expressions
+
+(procedure
+ (purpose "Replace all occurrences of regexp with string")
+ (in scheme (regexp-replace old-regexp str new-string) (srfi 115))
+ (in racket (regexp-replace* old-regexp str new-string))
+ (in clojure (replace str old-regexp new-string) clojure.string))
