@@ -128,27 +128,28 @@
          groups))))
 
 (define (display-page)
-  (display "<!doctype html>")
-  (display-sxml
-   `(html
-     (@ (lang "en"))
-     (head
-      (title "Rosetta Stone")
-      (meta (@ (charset "UTF-8")))
-      (style ""
-        "body { font-family: sans-serif; background-color: beige;"
-        " max-width: 40em; margin: 12px; }"
-        "table { border-collapse: collapse; }"
-        "table, th, td { border: 1px solid black; }"
-        "th, td { vertical-align: top; padding: 2px; }"
-        "th.group { background-color: sandybrown; }"
-        "th.hidden { border: 0; }"
-        ".red { background-color: sandybrown; }"
-        ".green { background-color: lightgreen; }"
-        ".blue { background-color: lightblue; }"))
-     (body
-      (h1 "Rosetta Stone")
-      ,(big-table))))
-  (newline))
+  (let ((title "Lisp/ML Rosetta Stone"))
+    (display "<!doctype html>")
+    (display-sxml
+     `(html
+       (@ (lang "en"))
+       (head
+        (title ,title)
+        (meta (@ (charset "UTF-8")))
+        (style ""
+          "body { font-family: sans-serif; background-color: beige;"
+          " max-width: 40em; margin: 12px; }"
+          "table { border-collapse: collapse; }"
+          "table, th, td { border: 1px solid black; }"
+          "th, td { vertical-align: top; padding: 2px; }"
+          "th.group { background-color: sandybrown; }"
+          "th.hidden { border: 0; }"
+          ".red { background-color: sandybrown; }"
+          ".green { background-color: lightgreen; }"
+          ".blue { background-color: lightblue; }"))
+       (body
+        (h1 ,title)
+        ,(big-table))))
+    (newline)))
 
 (with-output-to-file "index.html" display-page)
