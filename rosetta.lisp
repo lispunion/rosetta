@@ -355,6 +355,7 @@
 
   (procedure
    (purpose "Replace all occurrences of regexp with string")
+   (in emacs-lisp (replace-regexp-in-string old-regexp new-string str))
    (in scheme (regexp-replace old-regexp str new-string) (srfi 115))
    (in racket (regexp-replace* old-regexp str new-string))
    (in clojure (replace str old-regexp new-string) clojure.string)))
