@@ -23,7 +23,7 @@
    (in clojure empty?)
    (in standard-ml "List.null")
    (in ocaml "")
-   (in fsharp ".IsEmpty")
+   (in fsharp "List.isEmpty")
    (in elm "List.isEmpty")))
 
 (group "List constructors"
