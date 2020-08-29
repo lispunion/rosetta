@@ -265,39 +265,56 @@
    (in scheme set-difference (srfi 113))
    (in clojure difference clojure.set)))
 
-(group "Character"
+(group "Character case"
 
   (procedure
    (purpose "Translate a Unicode character to uppercase")
    (in scheme char-upcase)
    (in common-lisp char-upcase)
+   (in emacs-lisp upcase)
    (in clojure upper-case clojure.string))
 
   (procedure
    (purpose "Translate a Unicode character to lowercase")
    (in scheme char-downcase)
    (in common-lisp char-downcase)
+   (in emacs-lisp downcase)
    (in clojure lower-case clojure.string)))
 
-(group "String"
+(group "String constructors"
+
+  (procedure
+   (purpose "Make a string of a character repeated N times")
+   (in common-lisp "(make-string N :initial-element c)")
+   (in emacs-lisp make-string)
+   (in scheme make-string)
+   (in racket make-string))
+
+  (procedure
+   (purpose "Concatenate many strings into one")
+   (in common-lisp "concatenate #'string")
+   (in emacs-lisp "concatenate #'string")
+   (in scheme string-append)
+   (in racket string-append)
+   (in clojure str)))
+
+(group "String case"
 
   (procedure
    (purpose "Translate a Unicode string to uppercase")
-   (in scheme string-upcase)
    (in common-lisp string-upcase)
+   (in emacs-lisp upcase)
+   (in scheme string-upcase)
+   (in racket string-upcase)
    (in clojure upper-case clojure.string))
 
   (procedure
    (purpose "Translate a Unicode string to lowercase")
-   (in scheme string-downcase)
    (in common-lisp string-downcase)
-   (in clojure lower-case clojure.string))
-
-  (procedure
-   (purpose "Concatenate many strings into one")
-   (in scheme string-append)
-   (in common-lisp "concatenate #'string")
-   (in clojure str)))
+   (in emacs-lisp downcase)
+   (in scheme string-downcase)
+   (in racket string-downcase)
+   (in clojure lower-case clojure.string)))
 
 (group "Regular expression"
 
